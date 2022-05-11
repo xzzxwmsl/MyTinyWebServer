@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xzz/TinyWebServer/locker/locker.h
+
+/home/xzz/TinyWebServer/main.cpp
+iostream
+-
+locker/locker.h
+/home/xzz/TinyWebServer/locker/locker.h
+pthread.h
+-
+

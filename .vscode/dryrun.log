@@ -1,0 +1,21 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/xzz/TinyWebServer'
+/usr/bin/cmake -S/home/xzz/TinyWebServer -B/home/xzz/TinyWebServer --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/xzz/TinyWebServer/CMakeFiles /home/xzz/TinyWebServer/CMakeFiles/progress.marks
+make -f CMakeFiles/Makefile2 all
+make[1]: Entering directory '/home/xzz/TinyWebServer'
+make -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/depend
+make[2]: Entering directory '/home/xzz/TinyWebServer'
+cd /home/xzz/TinyWebServer && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/xzz/TinyWebServer /home/xzz/TinyWebServer /home/xzz/TinyWebServer /home/xzz/TinyWebServer /home/xzz/TinyWebServer/CMakeFiles/out/main.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/xzz/TinyWebServer'
+make -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/build
+make[2]: Entering directory '/home/xzz/TinyWebServer'
+make[2]: Leaving directory '/home/xzz/TinyWebServer'
+make[1]: Leaving directory '/home/xzz/TinyWebServer'
+make: Leaving directory '/home/xzz/TinyWebServer'
+ 
+make[2]: *** No rule to make target 'locker/locker.h', needed by 'CMakeFiles/out/main.dir/main.o'.
+make[2]: *** No rule to make target 'locker/locker.cpp', needed by 'CMakeFiles/out/main.dir/locker/locker.o'.
+make[1]: *** [CMakeFiles/Makefile2:76: CMakeFiles/out/main.dir/all] Error 2
+make: *** [Makefile:84: all] Error 2
+

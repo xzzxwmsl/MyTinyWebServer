@@ -1,0 +1,6 @@
+PROJECT (MyTinyWebServer)
+SET (CMAKE_CXX_STANDARD 11)
+SET(CMAKE_CXX_STANDARD_REQUIRED True)
+SET (L main.cpp src/locker/locker.cc)
+ADD_EXECUTABLE(out/main ${L})
+TARGET_LINK_LIBRARIES(out/main pthread)
