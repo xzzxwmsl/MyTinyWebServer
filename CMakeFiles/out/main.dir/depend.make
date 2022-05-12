@@ -3,7 +3,7 @@
 
 CMakeFiles/out/main.dir/main.cpp.o: main.cpp
 CMakeFiles/out/main.dir/main.cpp.o: src/locker/locker.h
-CMakeFiles/out/main.dir/main.cpp.o: src/processpool/processpool.h
+CMakeFiles/out/main.dir/main.cpp.o: src/threadpool/threadpool.h
 
 CMakeFiles/out/main.dir/src/locker/locker.cc.o: src/locker/locker.cc
 CMakeFiles/out/main.dir/src/locker/locker.cc.o: src/locker/locker.h
