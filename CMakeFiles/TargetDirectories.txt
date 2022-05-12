@@ -1,3 +1,3 @@
-/home/xzz/TinyWebServer/CMakeFiles/rebuild_cache.dir
-/home/xzz/TinyWebServer/CMakeFiles/edit_cache.dir
-/home/xzz/TinyWebServer/CMakeFiles/out/main.dir
+/home/xzz/MyTinyWebServer/CMakeFiles/rebuild_cache.dir
+/home/xzz/MyTinyWebServer/CMakeFiles/edit_cache.dir
+/home/xzz/MyTinyWebServer/CMakeFiles/out/main.dir

@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/xzz/MyTinyWebServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xzz/MyTinyWebServer
+CMAKE_BINARY_DIR = /home/xzz/MyTinyWebServer/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/out/main.dir/depend.make
@@ -58,30 +58,30 @@ include CMakeFiles/out/main.dir/progress.make
 include CMakeFiles/out/main.dir/flags.make
 
 CMakeFiles/out/main.dir/main.cpp.o: CMakeFiles/out/main.dir/flags.make
-CMakeFiles/out/main.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/out/main.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out/main.dir/main.cpp.o -c /home/xzz/MyTinyWebServer/main.cpp
+CMakeFiles/out/main.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xzz/MyTinyWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/out/main.dir/main.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out/main.dir/main.cpp.o -c /home/xzz/MyTinyWebServer/main.cpp
 
 CMakeFiles/out/main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out/main.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xzz/MyTinyWebServer/main.cpp > CMakeFiles/out/main.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xzz/MyTinyWebServer/main.cpp > CMakeFiles/out/main.dir/main.cpp.i
 
 CMakeFiles/out/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out/main.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xzz/MyTinyWebServer/main.cpp -o CMakeFiles/out/main.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xzz/MyTinyWebServer/main.cpp -o CMakeFiles/out/main.dir/main.cpp.s
 
 CMakeFiles/out/main.dir/src/locker/locker.cc.o: CMakeFiles/out/main.dir/flags.make
-CMakeFiles/out/main.dir/src/locker/locker.cc.o: src/locker/locker.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/out/main.dir/src/locker/locker.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out/main.dir/src/locker/locker.cc.o -c /home/xzz/MyTinyWebServer/src/locker/locker.cc
+CMakeFiles/out/main.dir/src/locker/locker.cc.o: ../src/locker/locker.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xzz/MyTinyWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/out/main.dir/src/locker/locker.cc.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/out/main.dir/src/locker/locker.cc.o -c /home/xzz/MyTinyWebServer/src/locker/locker.cc
 
 CMakeFiles/out/main.dir/src/locker/locker.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/out/main.dir/src/locker/locker.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xzz/MyTinyWebServer/src/locker/locker.cc > CMakeFiles/out/main.dir/src/locker/locker.cc.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xzz/MyTinyWebServer/src/locker/locker.cc > CMakeFiles/out/main.dir/src/locker/locker.cc.i
 
 CMakeFiles/out/main.dir/src/locker/locker.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/out/main.dir/src/locker/locker.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xzz/MyTinyWebServer/src/locker/locker.cc -o CMakeFiles/out/main.dir/src/locker/locker.cc.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xzz/MyTinyWebServer/src/locker/locker.cc -o CMakeFiles/out/main.dir/src/locker/locker.cc.s
 
 # Object files for target out/main
 out/main_OBJECTS = \
@@ -95,7 +95,7 @@ out/main: CMakeFiles/out/main.dir/main.cpp.o
 out/main: CMakeFiles/out/main.dir/src/locker/locker.cc.o
 out/main: CMakeFiles/out/main.dir/build.make
 out/main: CMakeFiles/out/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable out/main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xzz/MyTinyWebServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable out/main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/out/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/out/main.dir/clean:
 .PHONY : CMakeFiles/out/main.dir/clean
 
 CMakeFiles/out/main.dir/depend:
-	cd /home/xzz/MyTinyWebServer && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer/CMakeFiles/out/main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xzz/MyTinyWebServer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer/build /home/xzz/MyTinyWebServer/build /home/xzz/MyTinyWebServer/build/CMakeFiles/out/main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/out/main.dir/depend
 

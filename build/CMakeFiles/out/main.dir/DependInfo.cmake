@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xzz/MyTinyWebServer/main.cpp" "/home/xzz/MyTinyWebServer/CMakeFiles/out/main.dir/main.cpp.o"
-  "/home/xzz/MyTinyWebServer/src/locker/locker.cc" "/home/xzz/MyTinyWebServer/CMakeFiles/out/main.dir/src/locker/locker.cc.o"
+  "/home/xzz/MyTinyWebServer/main.cpp" "/home/xzz/MyTinyWebServer/build/CMakeFiles/out/main.dir/main.cpp.o"
+  "/home/xzz/MyTinyWebServer/src/locker/locker.cc" "/home/xzz/MyTinyWebServer/build/CMakeFiles/out/main.dir/src/locker/locker.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
