@@ -1,0 +1,1 @@
+/usr/bin/g++  -g  -rdynamic CMakeFiles/out/main.dir/main.cpp.o CMakeFiles/out/main.dir/src/locker/locker.cc.o  -o out/main  -lpthread 

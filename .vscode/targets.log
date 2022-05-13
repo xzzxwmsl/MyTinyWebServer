@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed May 11 13:52:33 2022
+# Make data base, printed on Fri May 13 15:31:32 2022
 
 # Variables
 
@@ -33,17 +33,17 @@ VSCODE_LOG_NATIVE = false
 # default
 MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/xzz/TinyWebServer
+CURDIR := /home/xzz/MyTinyWebServer
 # makefile (from 'Makefile', line 39)
 SHELL = /bin/sh
 # makefile (from 'Makefile', line 45)
 RM = /usr/bin/cmake -E remove -f
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"a78078f10f99ab7adc9063c14c25e7ae.zh-cn","_translationsConfigFile":"/home/xzz/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn/tcf.json","_cacheRoot":"/home/xzz/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn","_resolvedLanguagePackCoreLocation":"/home/xzz/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn/57fd6d0195bb9b9d1b49f6da5db789060795de47","_corruptedFile":"/home/xzz/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/tcf.json","_cacheRoot":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/da15b6fd3ef856477bf6f4fb29ba1b7af717770d","_corruptedFile":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /home/xzz/.vscode-server/bin/57fd6d0195bb9b9d1b49f6da5db789060795de47/node
+_ = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/node
 # makefile (from 'Makefile', line 54)
-CMAKE_BINARY_DIR = /home/xzz/TinyWebServer
+CMAKE_BINARY_DIR = /home/xzz/MyTinyWebServer
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -57,15 +57,15 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/xzz
 # environment
-SSH_CONNECTION = 221.10.55.157 51556 10.0.12.6 22
+SSH_CONNECTION = 221.10.55.157 49786 10.0.12.6 22
 # environment
-PATH = /home/xzz/.vscode-server/bin/57fd6d0195bb9b9d1b49f6da5db789060795de47/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/1002
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-3672bdfb-ddbd-4afd-b4cb-436095481b66.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-8c26a99e-1ed2-4026-8883-021046e32e3e.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -75,7 +75,7 @@ LS_COLORS =
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/xzz/TinyWebServer
+PWD = /home/xzz/MyTinyWebServer
 # default
 .LOADED := 
 # automatic
@@ -91,7 +91,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = xzz
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from 'Makefile', line 48)
 EQUALS = =
 # automatic
@@ -109,13 +109,13 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 1
 # environment
-XDG_SESSION_ID = 85210
+XDG_SESSION_ID = 89190
 # environment
 USER = xzz
 # makefile
 .DEFAULT_GOAL := default_target
 # makefile (from 'Makefile', line 51)
-CMAKE_SOURCE_DIR = /home/xzz/TinyWebServer
+CMAKE_SOURCE_DIR = /home/xzz/MyTinyWebServer
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -131,11 +131,11 @@ MAKEFLAGS = pqrRs
 # environment
 MFLAGS = -pqrRs
 # environment
-SSH_CLIENT = 221.10.55.157 51556 22
+SSH_CLIENT = 221.10.55.157 49786 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /home/xzz/.vscode-server/bin/57fd6d0195bb9b9d1b49f6da5db789060795de47/bin/helpers/browser.sh
+BROWSER = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/helpers/browser.sh
 # environment
 VSCODE_HANDLES_SIGPIPE = true
 # default
@@ -175,9 +175,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64514, inode 780587): 11 files, no impossibilities.
+# . (device 64514, inode 780587): 15 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -188,6 +188,12 @@ MOTD_SHOWN = pam
 # Files
 
 cmake_force:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+src/locker/locker.s: src/locker/locker.cc.s
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -212,9 +218,9 @@ all: cmake_check_build_system
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 #  recipe to execute (from 'Makefile', line 83):
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzz/TinyWebServer/CMakeFiles /home/xzz/TinyWebServer/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzz/MyTinyWebServer/CMakeFiles /home/xzz/MyTinyWebServer/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzz/TinyWebServer/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzz/MyTinyWebServer/CMakeFiles 0
 
 out/main: cmake_check_build_system
 #  Phony target (prerequisite of .PHONY).
@@ -224,18 +230,24 @@ out/main: cmake_check_build_system
 #  recipe to execute (from 'Makefile', line 118):
 	$(MAKE) -f CMakeFiles/Makefile2 out/main
 
-.PHONY: default_target cmake_force rebuild_cache rebuild_cache/fast edit_cache edit_cache/fast all clean clean/fast preinstall preinstall/fast depend out/main out/main/fast locker/locker.o locker/locker.i locker/locker.s main.o main.i main.s help cmake_check_build_system
+.PHONY: default_target cmake_force rebuild_cache rebuild_cache/fast edit_cache edit_cache/fast all clean clean/fast preinstall preinstall/fast depend out/main out/main/fast main.o main.cpp.o main.i main.cpp.i main.s main.cpp.s src/locker/locker.o src/locker/locker.cc.o src/locker/locker.i src/locker/locker.cc.i src/locker/locker.s src/locker/locker.cc.s help cmake_check_build_system
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-main.s:
+src/locker/locker.cc.s:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 153):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.s
+#  recipe to execute (from 'Makefile', line 177):
+	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.s
+
+main.s: main.cpp.s
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
 
 preinstall/fast:
 #  Phony target (prerequisite of .PHONY).
@@ -253,25 +265,9 @@ preinstall/fast:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-10 18:36:47.190041806
+#  Last modified 2022-05-12 20:42:48.774106728
 #  File has been updated.
 #  Successfully updated.
-
-locker/locker.i:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 133):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/locker/locker.i
-
-locker/locker.o:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 128):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/locker/locker.o
 
 .NOTPARALLEL:
 #  Implicit rule search has not been done.
@@ -279,11 +275,27 @@ locker/locker.o:
 #  File has not been updated.
 
 clean/fast: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
  
+#  File does not exist.
+#  File has not been updated.
+
+main.cpp.i:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 141):
+	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.i
+
+main.cpp.o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 132):
+	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.o
 
 cmake_check_build_system:
 #  Phony target (prerequisite of .PHONY).
@@ -310,7 +322,7 @@ cmake_check_build_system:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=3/14=21%
-#  recipe to execute (from 'Makefile', line 182):
+#  recipe to execute (from 'Makefile', line 206):
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 
 help:
@@ -318,7 +330,7 @@ help:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 158):
+#  recipe to execute (from 'Makefile', line 182):
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
@@ -326,12 +338,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... out/main"
-	@echo "... locker/locker.o"
-	@echo "... locker/locker.i"
-	@echo "... locker/locker.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/locker/locker.o"
+	@echo "... src/locker/locker.i"
+	@echo "... src/locker/locker.s"
 
 preinstall: all
 #  Phony target (prerequisite of .PHONY).
@@ -366,6 +378,18 @@ default_target: all
 #  File does not exist.
 #  File has not been updated.
 
+src/locker/locker.i: src/locker/locker.cc.i
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+src/locker/locker.o: src/locker/locker.cc.o
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -373,14 +397,6 @@ clean:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 90):
 	$(MAKE) -f CMakeFiles/Makefile2 clean
-
-locker/locker.s:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 138):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/locker/locker.s
 
 rebuild_cache/fast: rebuild_cache
 #  Phony target (prerequisite of .PHONY).
@@ -394,6 +410,30 @@ edit_cache/fast: edit_cache
 #  File does not exist.
 #  File has not been updated.
 
+main.cpp.s:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 150):
+	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.s
+
+src/locker/locker.cc.i:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 168):
+	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.i
+
+src/locker/locker.cc.o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 159):
+	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.o
+
 out/main/fast:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -402,21 +442,17 @@ out/main/fast:
 #  recipe to execute (from 'Makefile', line 123):
 	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/build
 
-main.i:
+main.i: main.cpp.i
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 148):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.i
 
-main.o:
+main.o: main.cpp.o
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 143):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.o
 
 # Not a target:
 .hpux_make_needs_suffix_list:
@@ -434,19 +470,19 @@ rebuild_cache:
 	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 
 # files hash-table stats:
-# Load=29/1024=3%, Rehash=0, Collisions=4/95=4%
+# Load=35/1024=3%, Rehash=0, Collisions=4/125=3%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 42 / storage = 504 B / avg = 12 B
-# current buf: size = 8162 B / used = 504 B / count = 42 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 52 / storage = 638 B / avg = 12 B
+# current buf: size = 8162 B / used = 638 B / count = 52 / avg = 12 B
 
-# strcache performance: lookups = 148 / hit rate = 71%
+# strcache performance: lookups = 188 / hit rate = 72%
 # hash-table stats:
-# Load=42/8192=1%, Rehash=0, Collisions=2/148=1%
-# Finished Make data base on Wed May 11 13:52:33 2022
+# Load=52/8192=1%, Rehash=0, Collisions=2/188=1%
+# Finished Make data base on Fri May 13 15:31:32 2022
 
  
