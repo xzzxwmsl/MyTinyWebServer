@@ -55,25 +55,24 @@ public:
     };
 
     // 行的读取状态
-    // 读到一个完整的行\行出错\行数据尚不完整
     enum LINE_STATUS
     {
-        LINE_OK = 0,
-        LINE_BAD,
-        LINE_OPEN
+        LINE_OK = 0, // 读到了一个完整的行
+        LINE_BAD,    // 行出错
+        LINE_OPEN    // 行数据不完整
     };
 
     // 服务器处理HTTP请求的可能结果
     enum HTTP_CODE
     {
-        NO_REQUEST,     // 请求不完整,需要继续读取客户数据
-        GET_REQUEST,    // 获得了一个完整的客户请求
-        BAD_REQUEST,    // 客户请求有语法错误
-        NO_RESOURCE,    
+        NO_REQUEST,  // 请求不完整,需要继续读取客户数据
+        GET_REQUEST, // 获得了一个完整的客户请求
+        BAD_REQUEST, // 客户请求有语法错误
+        NO_RESOURCE,
         FORBIDEN_REQUEST, // 客户对资源没有访问权限
-        FILE_REQUEST,   // 服务器内部错误
-        INTERNAL_ERROR, // 
-        CLOSED_CONNECTION   // 客户端已经关闭连接
+        FILE_REQUEST,     // 服务器内部错误
+        INTERNAL_ERROR,   //
+        CLOSED_CONNECTION // 客户端已经关闭连接
     };
 
     // 暴露的函数接口
@@ -104,7 +103,7 @@ private:
     HTTP_CODE parse_headers(char *text);
     HTTP_CODE parse_content(char *text);
     HTTP_CODE do_request();
-    inline char *get_line();
+    inline char *get_line() { return m_read_buf + m_start_line; }
     LINE_STATUS parse_line();
 
     // process_write调用，以填充HTTP应答的过程函数

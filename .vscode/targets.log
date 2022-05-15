@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 13 15:31:32 2022
+# Make data base, printed on Sun May 15 16:08:18 2022
 
 # Variables
 
@@ -57,7 +57,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/xzz
 # environment
-SSH_CONNECTION = 221.10.55.157 49786 10.0.12.6 22
+SSH_CONNECTION = 221.10.55.157 59489 10.0.12.6 22
 # environment
 PATH = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -65,7 +65,7 @@ XDG_RUNTIME_DIR = /run/user/1002
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-8c26a99e-1ed2-4026-8883-021046e32e3e.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-e4206aaf-3181-4739-b624-6b82db136959.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -109,7 +109,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 1
 # environment
-XDG_SESSION_ID = 89190
+XDG_SESSION_ID = 93786
 # environment
 USER = xzz
 # makefile
@@ -131,7 +131,7 @@ MAKEFLAGS = pqrRs
 # environment
 MFLAGS = -pqrRs
 # environment
-SSH_CLIENT = 221.10.55.157 49786 22
+SSH_CLIENT = 221.10.55.157 59489 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -277,7 +277,6 @@ Makefile:
 clean/fast: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
- 
 #  File does not exist.
 #  File has not been updated.
 
@@ -483,6 +482,6 @@ rebuild_cache:
 # strcache performance: lookups = 188 / hit rate = 72%
 # hash-table stats:
 # Load=52/8192=1%, Rehash=0, Collisions=2/188=1%
-# Finished Make data base on Fri May 13 15:31:32 2022
+# Finished Make data base on Sun May 15 16:08:18 2022
 
  

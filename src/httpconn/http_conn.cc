@@ -206,3 +206,82 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
     // 继续读取数据
     return NO_REQUEST;
 }
+
+// 分析HTTP headers部分
+http_conn::HTTP_CODE http_conn::parse_headers(char *text)
+{
+    if (text[0] == '\0')
+    {
+        if (m_content_length != 0)
+        {
+            // 还需要处理请求体部分
+            m_check_state = CHECK_STATE_CONTENT;
+            return NO_REQUEST;
+        }
+        // 获得了一个完整的请求
+        return GET_REQUEST;
+    }
+    else if (strncasecmp(text, "Host:", 5) == 0)
+    {
+        // Host 字段
+        text += 5;
+        // 跳过空格
+        text += strspn(text, " \t");
+        m_host = text;
+    }
+    else if (strncasecmp(text, "Content-Length:", 15) == 0)
+    {
+        text += 15;
+        text += strspn(text, " \t");
+        if (strlen(text) == strspn(text, "0123456789"))
+        {
+            // 保证长度一定是数字，否则报错
+            m_content_length = atoi(text);
+        }
+        else
+        {
+            return BAD_REQUEST;
+        }
+    }
+    else if (strncasecmp(text, "Connection:", 11))
+    {
+        text += 11;
+        text += strspn(text, " \t");
+        // 是Keep-Alive的话（返回0）则保持长连接，置为True
+        m_linger = !(strcasecmp(text, "Keep-Alive"));
+    }
+    else
+    {
+        printf("UNKNOWN HEADER : %s", text);
+    }
+    // 没有返回的，则说明还需要继续请求数据
+    return NO_REQUEST;
+}
+
+// 处理HTTP请求体
+http_conn::HTTP_CODE http_conn::parse_content(char *text)
+{
+    if (m_read_idx > m_content_length + m_checked_idx)
+    {
+        text[m_content_length] = '\0';
+        // m_content = text // 请求体
+        return GET_REQUEST;
+    }
+    else
+    {
+        // 还没接收完
+        return NO_REQUEST;
+    }
+}
+
+// 主状态机，分析http请求的入口函数
+http_conn::HTTP_CODE http_conn::process_read()
+{
+    LINE_STATUS line_status = LINE_OK;
+    HTTP_CODE ret = NO_REQUEST;
+    char *text = nullptr;
+    while ((m_check_state == CHECK_STATE_CONTENT && line_status == LINE_OK) || ((line_status == parse_line()) == LINE_OK))
+    {
+        text = get_line();
+    }
+}
