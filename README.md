@@ -35,3 +35,10 @@ qingguoyi https://github.com/qinguoyi/TinyWebServer
 * 当有新的请求到来，主线程接受该请求并向epoll内核事件表中注册该请求的读写事件
 * 如果连接的socket上有读写事件发生，主线程从socket上接收数据，并将数据封装成请求对象插入到请求队列中
 * 所有的工作线程睡眠在请求队列上，通过某种竞争机制获取处理权
+
+## EPOLL
+
+### ET、LT、EPOLLONESHOT
+ * ET：边缘触发模式，一般和非阻塞fd一起使用。 epoll_wait检测到文件描述符有事件发生，然后会通知应用，并且ET中，**一个事件只触发一次**，因此对该fd的处理（如读取数据等）应一次完成
+* LT：水平触发模式，epoll_wait检测到文件描述符有事件发生时，会将其通知给应用程序，可以不立即处理。**每次调用epoll_wait都会通知**，直到该事件被处理
+* EPOLLONESHOT：保证只有一个线程可以处理该socket上发生的事件，每次处理完后，需要调用`epoll_ctl`来重置EPOLLONESHOT事件
