@@ -10,7 +10,7 @@ const char *error_404_title = "Not Found";
 const char *error_404_form = "The requested file was not found on this server.\n";
 const char *error_500_title = "Internal error";
 const char *error_500_form = "There was an unusual problem serving the requested file.\n";
-
+const char *ok_size_zero = "<html><body>Test</body></html>";
 int setnonblocking(int fd)
 {
     int oldopt = fcntl(fd, F_GETFL);
@@ -148,6 +148,40 @@ http_conn::LINE_STATUS http_conn::parse_line()
     return LINE_OPEN;
 }
 
+// 循环读取客户数据直到没有数据可读
+bool http_conn::read()
+{
+    if (m_read_idx > READ_BUFFER_SIZE)
+    {
+        return false;
+    }
+
+    int bytes_read = 0;
+    while (true)
+    {
+        bytes_read = recv(m_sockfd, m_read_buf + m_read_idx, READ_BUFFER_SIZE - m_read_idx, 0);
+        if (bytes_read == -1)
+        {
+            // EWOULDBLOCK : 发送时缓冲区已满，或者读取时缓冲区已空
+            if (errno == EAGAIN || errno == EWOULDBLOCK)
+            {
+                break;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (bytes_read == 0)
+        {
+            return false;
+        }
+        // 将已读取量加上去
+        m_read_idx += bytes_read;
+    }
+    return true;
+}
+
 // 解析http请求行，获取请求方法，目标url和版本号
 http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
 {
@@ -172,8 +206,8 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
         return BAD_REQUEST;
     }
     // strspn : 寻找字符串url中第一个不是" \t"匹配的位置
-    m_url += strspn(url, " \t");
-    m_version = strpbrk(url, " \t");
+    m_url += strspn(m_url, " \t");
+    m_version = strpbrk(m_url, " \t");
     if (m_version == nullptr)
     {
         return BAD_REQUEST;
@@ -190,7 +224,7 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
     {
         m_url += 7;
         // 找到第一个以"/"开头的位置，即资源url
-        m_url = strchr(m_url, "/");
+        m_url = strchr(m_url, '/');
     }
     if (m_url == nullptr || m_url[0] != '/')
     {
@@ -282,6 +316,299 @@ http_conn::HTTP_CODE http_conn::process_read()
     char *text = nullptr;
     while ((m_check_state == CHECK_STATE_CONTENT && line_status == LINE_OK) || ((line_status == parse_line()) == LINE_OK))
     {
+        // 获取新的一行
         text = get_line();
+
+        m_start_line = m_checked_idx;
+        // printf("got http line %s\n", text);
+        switch (m_check_state)
+        {
+        case CHECK_STATE_REQUESTLINE:
+        {
+            ret = parse_request_line(text);
+            if (ret == BAD_REQUEST)
+            {
+                return BAD_REQUEST;
+            }
+            break;
+        }
+        case CHECK_STATE_HEADER:
+        {
+            ret = parse_headers(text);
+            if (ret == BAD_REQUEST)
+            {
+                return BAD_REQUEST;
+            }
+            else if (ret == GET_REQUEST)
+            {
+                return do_request();
+            }
+            break;
+        }
+        case CHECK_STATE_CONTENT:
+        {
+            ret = parse_content(text);
+            if (ret == GET_REQUEST)
+            {
+                return do_request();
+            }
+            line_status = LINE_OK;
+            break;
+        }
+        default:
+            return INTERNAL_ERROR;
+        }
     }
+    return NO_REQUEST;
+}
+
+// 得到了一个完整的request后，分析目标文件属性。
+// 如果目标文件存在且可读,且不是目录
+// 那么就使用mmap将目标文件映射到内存地址m_file_address
+// 中并告知调用者获取文件成功
+http_conn::HTTP_CODE http_conn::do_request()
+{
+    strcpy(m_real_file, m_root);
+    int root_len = strlen(m_root);
+    /*  strncpy
+        把 src 所指向的字符串复制到 dest
+        最多复制 n 个字符。当 src 的长度小于 n 时
+        dest 的剩余部分将用空字节填充。
+    */
+    // 写明访问文件
+    strncpy(m_real_file + root_len, m_url, FILENAME_LEN - root_len - 1);
+    if (stat(m_real_file, &m_file_stat) < 0)
+    {
+        // 文件不存在
+        return NO_RESOURCE;
+    }
+    if (S_ISDIR(m_file_stat.st_mode))
+    {
+        return BAD_REQUEST;
+    }
+    if (!(m_file_stat.st_mode & S_IROTH))
+    {
+        return FORBIDEN_REQUEST;
+    }
+
+    // 访问真实文件
+    int fd = open(m_real_file, O_RDONLY);
+    // 映射到内存上
+    m_file_address = reinterpret_cast<char *>(mmap(0, m_file_stat.st_size, PROT_READ, MAP_PRIVATE, fd, 0));
+    close(fd);
+    return FILE_REQUEST;
+}
+
+// 取消内存映射区
+void http_conn::unmap()
+{
+    if (m_file_address)
+    {
+        munmap(m_file_address, m_file_stat.st_size);
+        m_file_address = 0;
+    }
+}
+
+// 写HTTP响应
+bool http_conn::write()
+{
+    int temp = 0;
+    int bytes_have_send = 0;
+    int bytes_to_send = m_write_idx;
+    if (bytes_to_send == 0)
+    {
+        // 没有要发送的,重新初始化
+        modfd(m_epollfd, m_sockfd, EPOLLIN);
+        init();
+        return true;
+    }
+
+    while (true)
+    {
+        temp = writev(m_sockfd, m_iv, m_iv_count);
+        if (temp <= -1)
+        {
+            /* TCP写缓冲区没有空间,则等待下一轮的
+                EPOLLOUT事件.在此之间服务器不能立即接收同一个客户的下一个请求
+                但是可以保证连接的完整性
+            */
+            if (errno == EAGAIN)
+            {
+                modfd(m_epollfd, m_sockfd, EPOLLOUT);
+                return true;
+            }
+            unmap();
+            return false;
+        }
+        // 成功发送了temp字节
+        bytes_to_send -= temp;
+        bytes_have_send += temp;
+
+        if (bytes_to_send <= 0)
+        {
+            // 发送成功,根据connection字段决定是否关闭连接
+            unmap();
+            modfd(m_epollfd, m_sockfd, EPOLLIN);
+            if (m_linger)
+            {
+                init();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}
+
+bool http_conn::add_respones(const char *format, ...)
+{
+    if (m_write_idx >= WRITE_BUFFER_SIZE)
+    {
+        return false;
+    }
+    va_list arg_list;
+    va_start(arg_list, format);
+    // 将要写的内容放置到m_write_buf上，然后返回长度
+    int len = vsnprintf(m_write_buf + m_write_idx, READ_BUFFER_SIZE - 1 - m_write_idx, format, arg_list);
+    if (len >= WRITE_BUFFER_SIZE - 1 - m_write_idx)
+    {
+        return false;
+    }
+    m_write_idx += len;
+    va_end(arg_list);
+    return true;
+}
+
+// 响应行
+bool http_conn::add_status_line(int status, const char *title)
+{
+    return add_respones("%s %d %s\r\n", "HTTP/1.1", status, title);
+}
+
+// 响应头
+bool http_conn::add_headers(int content_length)
+{
+    add_content_length(content_length);
+    add_linger();
+    // 响应头和响应体之间应该加个空行
+    add_blank_line();
+}
+
+// 响应体
+bool http_conn::add_content(const char *content)
+{
+    return add_respones("%s", content);
+}
+
+bool http_conn::add_content_length(int content_length)
+{
+    return add_respones("Content-Length: %d\r\n", content_length);
+}
+
+bool http_conn::add_linger()
+{
+    return add_respones("Connection: %s\r\n", (m_linger) ? "Keep-Alive" : "Close");
+}
+
+bool http_conn::add_blank_line()
+{
+    return add_respones("%s", "\r\n");
+}
+
+bool http_conn::process_write(HTTP_CODE ret)
+{
+    switch (ret)
+    {
+    case INTERNAL_ERROR:
+    {
+        add_status_line(500, error_500_title);
+        add_headers(strlen(error_500_form));
+        if (!add_content(error_500_form))
+        {
+            return false;
+        }
+        break;
+    }
+    case NO_RESOURCE:
+    {
+        add_status_line(404, error_404_title);
+        add_headers(strlen(error_404_form));
+        if (!add_content(error_404_form))
+        {
+            return false;
+        }
+        break;
+    }
+    case BAD_REQUEST:
+    {
+        add_status_line(400, error_400_title);
+        add_headers(strlen(error_400_form));
+        if (!add_content(error_400_form))
+        {
+            return false;
+        }
+        break;
+    }
+    case FORBIDEN_REQUEST:
+    {
+        add_status_line(403, error_403_title);
+        add_headers(strlen(error_403_form));
+        if (!add_content(error_403_form))
+            return false;
+        break;
+    }
+    case FILE_REQUEST:
+    {
+        add_status_line(200, ok_200_title);
+        if (m_file_stat.st_size != 0)
+        {
+            add_headers(m_file_stat.st_size);
+            m_iv[0].iov_base = m_write_buf;
+            m_iv[0].iov_len = m_write_idx;
+            m_iv[1].iov_base = m_file_address;
+            m_iv[1].iov_len = m_file_stat.st_size;
+            m_iv_count = 2;
+            return true;
+        }
+        else
+        {
+            add_headers(strlen(ok_size_zero));
+            if (!add_content(ok_size_zero))
+            {
+                return false;
+            }
+        }
+        break;
+    }
+    default:
+        return false;
+        break;
+    }
+
+    m_iv[0].iov_base = m_write_buf;
+    m_iv[1].iov_len = m_write_idx;
+    m_iv_count = 1;
+    return true;
+}
+
+void http_conn::process()
+{
+    // 解析HTTP请求
+    HTTP_CODE read_ret = process_read();
+    // HTTP报文不完整
+    if (read_ret == NO_REQUEST)
+    {
+        modfd(m_epollfd, m_sockfd, EPOLLIN);
+        return;
+    }
+
+    // 填充响应报文
+    bool write_ret = process_write(read_ret);
+    if (!write_ret)
+    {
+        close_conn();
+    }
+    modfd(m_epollfd, m_sockfd, EPOLLOUT);
 }

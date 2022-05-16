@@ -2,6 +2,7 @@
 #define HTTP_CONN_H
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include<arpa/inet.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
@@ -17,6 +18,7 @@
 #include <fcntl.h>
 #include "../locker/locker.h"
 #include <sys/epoll.h>
+#include<sys/uio.h>
 class http_conn
 {
 public:
@@ -70,8 +72,8 @@ public:
         BAD_REQUEST, // 客户请求有语法错误
         NO_RESOURCE,
         FORBIDEN_REQUEST, // 客户对资源没有访问权限
-        FILE_REQUEST,     // 服务器内部错误
-        INTERNAL_ERROR,   //
+        FILE_REQUEST,     // 请求文件
+        INTERNAL_ERROR,   // 非法错误
         CLOSED_CONNECTION // 客户端已经关闭连接
     };
 
@@ -86,9 +88,9 @@ public:
     // 处理客户请求
     void process();
     // 非阻塞读
-    void read();
+    bool read();
     // 非阻塞写
-    void write();
+    bool write();
 
 private:
     // 初始化连接
