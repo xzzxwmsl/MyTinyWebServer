@@ -92,6 +92,9 @@ void http_conn::init()
 
     m_write_idx = 0;
 
+    bytes_have_send = 0;
+    bytes_to_send = 0;
+
     // 默认关闭长连接
     m_linger = false;
 }
@@ -410,11 +413,10 @@ void http_conn::unmap()
 }
 
 // 写HTTP响应
+// epoll_wait返回EPOLLOUT后，由服务器主线程调用，来将数据写入到socket中
 bool http_conn::write()
 {
     int temp = 0;
-    int bytes_have_send = 0;
-    int bytes_to_send = m_write_idx;
     if (bytes_to_send == 0)
     {
         // 没有要发送的,重新初始化
@@ -426,9 +428,10 @@ bool http_conn::write()
     while (true)
     {
         temp = writev(m_sockfd, m_iv, m_iv_count);
-        if (temp <= -1)
+        if (temp < 0)
         {
-            /* TCP写缓冲区没有空间,则等待下一轮的
+            /*
+                TCP写缓冲区没有空间,则等待下一轮的
                 EPOLLOUT事件.在此之间服务器不能立即接收同一个客户的下一个请求
                 但是可以保证连接的完整性
             */
@@ -437,17 +440,35 @@ bool http_conn::write()
                 modfd(m_epollfd, m_sockfd, EPOLLOUT);
                 return true;
             }
-            unmap();
-            return false;
+            else
+            {
+                unmap();
+                return false;
+            }
         }
-        // 成功发送了temp字节
-        bytes_to_send -= temp;
-        bytes_have_send += temp;
 
+        // 发送成功
+        bytes_have_send += temp;
+        bytes_to_send -= temp;
+
+        if (bytes_have_send >= m_iv[0].iov_len)
+        {
+            // 发送报文成功了,但是文件还没有发送完成
+            m_iv[0].iov_len = 0;
+            m_iv[1].iov_base = m_file_address + (bytes_have_send - m_write_idx);
+            m_iv[1].iov_len = bytes_to_send;
+        }
+        else
+        {
+            m_iv[0].iov_base = m_write_buf + bytes_have_send;
+            m_iv[0].iov_len = m_write_idx - bytes_have_send;
+        }
+
+        // 发送完成
         if (bytes_to_send <= 0)
         {
-            // 发送成功,根据connection字段决定是否关闭连接
             unmap();
+            // 重新注册socket可读事件
             modfd(m_epollfd, m_sockfd, EPOLLIN);
             if (m_linger)
             {
@@ -517,6 +538,7 @@ bool http_conn::add_blank_line()
     return add_respones("%s", "\r\n");
 }
 
+// 由工作线程的process调用，将数据写入到缓冲区中，然后主线程注册EPOLLOUT事件
 bool http_conn::process_write(HTTP_CODE ret)
 {
     switch (ret)
@@ -565,11 +587,15 @@ bool http_conn::process_write(HTTP_CODE ret)
         if (m_file_stat.st_size != 0)
         {
             add_headers(m_file_stat.st_size);
+            // 第一个iovec指向报文的缓冲区
             m_iv[0].iov_base = m_write_buf;
             m_iv[0].iov_len = m_write_idx;
+            // 第二个iovec指向文件的mmap区域
             m_iv[1].iov_base = m_file_address;
             m_iv[1].iov_len = m_file_stat.st_size;
             m_iv_count = 2;
+            bytes_to_send = m_write_idx + m_file_stat.st_size;
+            // 发送文件
             return true;
         }
         else
@@ -586,10 +612,11 @@ bool http_conn::process_write(HTTP_CODE ret)
         return false;
         break;
     }
-
+    // 除了FILE_REQUEST，都会执行本操作，发送报文缓冲区
     m_iv[0].iov_base = m_write_buf;
-    m_iv[1].iov_len = m_write_idx;
+    m_iv[0].iov_len = m_write_idx;
     m_iv_count = 1;
+    bytes_to_send = m_write_idx;
     return true;
 }
 

@@ -165,5 +165,8 @@ private:
     struct iovec m_iv[2];
     // 被写内存块的数量
     int m_iv_count;
+
+    int bytes_to_send;
+    int bytes_have_send;
 };
 #endif
