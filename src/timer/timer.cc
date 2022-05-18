@@ -79,10 +79,6 @@ void sort_timer_lst::adjust_timer(util_timer *timer)
 
 void sort_timer_lst::trick()
 {
-    if (lst.empty())
-    {
-        return;
-    }
     auto it = lst.begin();
     time_t cur_time = time(NULL);
     while (it != lst.end())
