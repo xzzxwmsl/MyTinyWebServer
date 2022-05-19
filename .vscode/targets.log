@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed May 18 12:32:52 2022
+# Make data base, printed on Thu May 19 13:07:48 2022
 
 # Variables
 
@@ -57,7 +57,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/xzz
 # environment
-SSH_CONNECTION = 221.10.55.157 51139 10.0.12.6 22
+SSH_CONNECTION = 221.10.55.157 55238 10.0.12.6 22
 # environment
 PATH = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -65,7 +65,7 @@ XDG_RUNTIME_DIR = /run/user/1002
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-e2f38f31-bf27-4b11-967b-669c6ca2fe0e.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-81af5f66-5424-4644-bd0a-44ac913ee580.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -109,7 +109,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 1
 # environment
-XDG_SESSION_ID = 99759
+XDG_SESSION_ID = 101907
 # environment
 USER = xzz
 # makefile
@@ -131,7 +131,7 @@ MAKEFLAGS = pqrRs
 # environment
 MFLAGS = -pqrRs
 # environment
-SSH_CLIENT = 221.10.55.157 51139 22
+SSH_CLIENT = 221.10.55.157 55238 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -175,9 +175,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64514, inode 780587): 16 files, no impossibilities.
+# . (device 64514, inode 780587): 19 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -193,7 +193,21 @@ cmake_force:
 #  File does not exist.
 #  File has not been updated.
 
+src/timer/timer.cc.s:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 231):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/timer/timer.cc.s
+
 src/locker/locker.s: src/locker/locker.cc.s
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+src/httpconn/http_conn.s: src/httpconn/http_conn.cc.s
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -222,15 +236,7 @@ all: cmake_check_build_system
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xzz/MyTinyWebServer/CMakeFiles 0
 
-out/main: cmake_check_build_system
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 118):
-	$(MAKE) -f CMakeFiles/Makefile2 out/main
-
-.PHONY: default_target cmake_force rebuild_cache rebuild_cache/fast edit_cache edit_cache/fast all clean clean/fast preinstall preinstall/fast depend out/main out/main/fast main.o main.cpp.o main.i main.cpp.i main.s main.cpp.s src/locker/locker.o src/locker/locker.cc.o src/locker/locker.i src/locker/locker.cc.i src/locker/locker.s src/locker/locker.cc.s help cmake_check_build_system
+.PHONY: default_target cmake_force rebuild_cache rebuild_cache/fast edit_cache edit_cache/fast all clean clean/fast preinstall preinstall/fast depend main main/fast main.o main.cpp.o main.i main.cpp.i main.s main.cpp.s src/httpconn/http_conn.o src/httpconn/http_conn.cc.o src/httpconn/http_conn.i src/httpconn/http_conn.cc.i src/httpconn/http_conn.s src/httpconn/http_conn.cc.s src/locker/locker.o src/locker/locker.cc.o src/locker/locker.i src/locker/locker.cc.i src/locker/locker.s src/locker/locker.cc.s src/timer/timer.o src/timer/timer.cc.o src/timer/timer.i src/timer/timer.cc.i src/timer/timer.s src/timer/timer.cc.s help cmake_check_build_system
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -240,8 +246,16 @@ src/locker/locker.cc.s:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 204):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/locker/locker.cc.s
+
+src/httpconn/http_conn.cc.s:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 177):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/httpconn/http_conn.cc.s
 
 main.s: main.cpp.s
 #  Phony target (prerequisite of .PHONY).
@@ -263,9 +277,10 @@ preinstall/fast:
 #  File has not been updated.
 
 # Not a target:
+ 
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-12 20:42:48.774106728
+#  Last modified 2022-05-18 23:17:14.65364594
 #  File has been updated.
 #  Successfully updated.
 
@@ -286,7 +301,7 @@ main.cpp.i:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 141):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
 
 main.cpp.o:
 #  Phony target (prerequisite of .PHONY).
@@ -294,8 +309,7 @@ main.cpp.o:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 132):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.o
- 
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
 
 cmake_check_build_system:
 #  Phony target (prerequisite of .PHONY).
@@ -322,7 +336,7 @@ cmake_check_build_system:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=3/14=21%
-#  recipe to execute (from 'Makefile', line 206):
+#  recipe to execute (from 'Makefile', line 266):
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 
 help:
@@ -330,20 +344,26 @@ help:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 182):
+#  recipe to execute (from 'Makefile', line 236):
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... out/main"
+	@echo "... main"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/httpconn/http_conn.o"
+	@echo "... src/httpconn/http_conn.i"
+	@echo "... src/httpconn/http_conn.s"
 	@echo "... src/locker/locker.o"
 	@echo "... src/locker/locker.i"
 	@echo "... src/locker/locker.s"
+	@echo "... src/timer/timer.o"
+	@echo "... src/timer/timer.i"
+	@echo "... src/timer/timer.s"
 
 preinstall: all
 #  Phony target (prerequisite of .PHONY).
@@ -352,6 +372,26 @@ preinstall: all
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 100):
 	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+
+src/timer/timer.i: src/timer/timer.cc.i
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+main/fast:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 123):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+
+src/timer/timer.o: src/timer/timer.cc.o
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
 
 .SILENT:
 #  Implicit rule search has not been done.
@@ -378,6 +418,22 @@ default_target: all
 #  File does not exist.
 #  File has not been updated.
 
+src/timer/timer.cc.i:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 222):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/timer/timer.cc.i
+
+src/timer/timer.cc.o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 213):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/timer/timer.cc.o
+
 src/locker/locker.i: src/locker/locker.cc.i
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -385,6 +441,18 @@ src/locker/locker.i: src/locker/locker.cc.i
 #  File has not been updated.
 
 src/locker/locker.o: src/locker/locker.cc.o
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+src/httpconn/http_conn.i: src/httpconn/http_conn.cc.i
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+src/httpconn/http_conn.o: src/httpconn/http_conn.cc.o
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -416,37 +484,53 @@ main.cpp.s:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 150):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 
 src/locker/locker.cc.i:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 168):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.i
+#  recipe to execute (from 'Makefile', line 195):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/locker/locker.cc.i
 
 src/locker/locker.cc.o:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 159):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.o
+#  recipe to execute (from 'Makefile', line 186):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/locker/locker.cc.o
 
-out/main/fast:
+src/httpconn/http_conn.cc.i:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 123):
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/build
+#  recipe to execute (from 'Makefile', line 168):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/httpconn/http_conn.cc.i
+
+src/httpconn/http_conn.cc.o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 159):
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/httpconn/http_conn.cc.o
 
 main.i: main.cpp.i
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+
+main: cmake_check_build_system
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 118):
+	$(MAKE) -f CMakeFiles/Makefile2 main
 
 main.o: main.cpp.o
 #  Phony target (prerequisite of .PHONY).
@@ -460,29 +544,36 @@ main.o: main.cpp.o
 #  Modification time never checked.
 #  File has not been updated.
 
+src/timer/timer.s: src/timer/timer.cc.s
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
 rebuild_cache:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 61):
+ 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 
 # files hash-table stats:
-# Load=35/1024=3%, Rehash=0, Collisions=4/125=3%
+# Load=47/1024=5%, Rehash=0, Collisions=4/173=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 53 / storage = 644 B / avg = 12 B
-# current buf: size = 8162 B / used = 644 B / count = 53 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 67 / storage = 928 B / avg = 13 B
+# current buf: size = 8162 B / used = 928 B / count = 67 / avg = 13 B
 
-# strcache performance: lookups = 189 / hit rate = 71%
+# strcache performance: lookups = 258 / hit rate = 74%
 # hash-table stats:
-# Load=53/8192=1%, Rehash=0, Collisions=2/189=1%
-# Finished Make data base on Wed May 18 12:32:52 2022
+# Load=67/8192=1%, Rehash=0, Collisions=2/258=1%
+# Finished Make data base on Thu May 19 13:07:48 2022
 
  

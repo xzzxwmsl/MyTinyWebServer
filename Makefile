@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named out/main
+# Target rules for targets named main
 
 # Build rule for target.
-out/main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 out/main
-.PHONY : out/main
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-out/main/fast:
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/build
-.PHONY : out/main/fast
+main/fast:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 main.o: main.cpp.o
 
@@ -129,7 +129,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +138,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,8 +147,35 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+src/httpconn/http_conn.o: src/httpconn/http_conn.cc.o
+
+.PHONY : src/httpconn/http_conn.o
+
+# target to build an object file
+src/httpconn/http_conn.cc.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/httpconn/http_conn.cc.o
+.PHONY : src/httpconn/http_conn.cc.o
+
+src/httpconn/http_conn.i: src/httpconn/http_conn.cc.i
+
+.PHONY : src/httpconn/http_conn.i
+
+# target to preprocess a source file
+src/httpconn/http_conn.cc.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/httpconn/http_conn.cc.i
+.PHONY : src/httpconn/http_conn.cc.i
+
+src/httpconn/http_conn.s: src/httpconn/http_conn.cc.s
+
+.PHONY : src/httpconn/http_conn.s
+
+# target to generate assembly for a file
+src/httpconn/http_conn.cc.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/httpconn/http_conn.cc.s
+.PHONY : src/httpconn/http_conn.cc.s
 
 src/locker/locker.o: src/locker/locker.cc.o
 
@@ -156,7 +183,7 @@ src/locker/locker.o: src/locker/locker.cc.o
 
 # target to build an object file
 src/locker/locker.cc.o:
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/locker/locker.cc.o
 .PHONY : src/locker/locker.cc.o
 
 src/locker/locker.i: src/locker/locker.cc.i
@@ -165,7 +192,7 @@ src/locker/locker.i: src/locker/locker.cc.i
 
 # target to preprocess a source file
 src/locker/locker.cc.i:
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/locker/locker.cc.i
 .PHONY : src/locker/locker.cc.i
 
 src/locker/locker.s: src/locker/locker.cc.s
@@ -174,8 +201,35 @@ src/locker/locker.s: src/locker/locker.cc.s
 
 # target to generate assembly for a file
 src/locker/locker.cc.s:
-	$(MAKE) -f CMakeFiles/out/main.dir/build.make CMakeFiles/out/main.dir/src/locker/locker.cc.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/locker/locker.cc.s
 .PHONY : src/locker/locker.cc.s
+
+src/timer/timer.o: src/timer/timer.cc.o
+
+.PHONY : src/timer/timer.o
+
+# target to build an object file
+src/timer/timer.cc.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/timer/timer.cc.o
+.PHONY : src/timer/timer.cc.o
+
+src/timer/timer.i: src/timer/timer.cc.i
+
+.PHONY : src/timer/timer.i
+
+# target to preprocess a source file
+src/timer/timer.cc.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/timer/timer.cc.i
+.PHONY : src/timer/timer.cc.i
+
+src/timer/timer.s: src/timer/timer.cc.s
+
+.PHONY : src/timer/timer.s
+
+# target to generate assembly for a file
+src/timer/timer.cc.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/timer/timer.cc.s
+.PHONY : src/timer/timer.cc.s
 
 # Help Target
 help:
@@ -185,13 +239,19 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... out/main"
+	@echo "... main"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/httpconn/http_conn.o"
+	@echo "... src/httpconn/http_conn.i"
+	@echo "... src/httpconn/http_conn.s"
 	@echo "... src/locker/locker.o"
 	@echo "... src/locker/locker.i"
 	@echo "... src/locker/locker.s"
+	@echo "... src/timer/timer.o"
+	@echo "... src/timer/timer.i"
+	@echo "... src/timer/timer.s"
 .PHONY : help
 
 

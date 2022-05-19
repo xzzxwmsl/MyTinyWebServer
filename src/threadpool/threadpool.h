@@ -69,6 +69,7 @@ threadpool<T>::~threadpool()
 template <typename T>
 bool threadpool<T>::append(T *request)
 {
+    printf("可用线程%d\n", (int)m_workqueue.size());
     m_queuelock.lock();
     if (m_workqueue.size() > m_max_requests)
     {

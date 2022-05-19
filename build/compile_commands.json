@@ -1,12 +1,22 @@
 [
 {
   "directory": "/home/xzz/MyTinyWebServer/build",
-  "command": "/usr/bin/g++    -g   -std=gnu++11 -o CMakeFiles/out/main.dir/main.cpp.o -c /home/xzz/MyTinyWebServer/main.cpp",
+  "command": "/usr/bin/g++    -g   -std=gnu++11 -o CMakeFiles/main.dir/main.cpp.o -c /home/xzz/MyTinyWebServer/main.cpp",
   "file": "/home/xzz/MyTinyWebServer/main.cpp"
 },
 {
   "directory": "/home/xzz/MyTinyWebServer/build",
-  "command": "/usr/bin/g++    -g   -std=gnu++11 -o CMakeFiles/out/main.dir/src/locker/locker.cc.o -c /home/xzz/MyTinyWebServer/src/locker/locker.cc",
+  "command": "/usr/bin/g++    -g   -std=gnu++11 -o CMakeFiles/main.dir/src/locker/locker.cc.o -c /home/xzz/MyTinyWebServer/src/locker/locker.cc",
   "file": "/home/xzz/MyTinyWebServer/src/locker/locker.cc"
+},
+{
+  "directory": "/home/xzz/MyTinyWebServer/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++11 -o CMakeFiles/main.dir/src/timer/timer.cc.o -c /home/xzz/MyTinyWebServer/src/timer/timer.cc",
+  "file": "/home/xzz/MyTinyWebServer/src/timer/timer.cc"
+},
+{
+  "directory": "/home/xzz/MyTinyWebServer/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++11 -o CMakeFiles/main.dir/src/httpconn/http_conn.cc.o -c /home/xzz/MyTinyWebServer/src/httpconn/http_conn.cc",
+  "file": "/home/xzz/MyTinyWebServer/src/httpconn/http_conn.cc"
 }
 ]

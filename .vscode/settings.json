@@ -13,7 +13,8 @@
         "memory_resource": "cpp",
         "iosfwd": "cpp",
         "new": "cpp",
-        "streambuf": "cpp"
+        "streambuf": "cpp",
+        "io_context": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

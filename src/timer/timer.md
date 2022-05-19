@@ -44,10 +44,10 @@ struct sigaction
 
 // 功能是检查或修改与指定信号相关联的处理动作（可同时两种操作）
 // signum : 要捕获的信号类型 act : 对信号设置新的处理方式 oldact : 输出信号原先的处理方式
-int sigactiom(int signum, const struct sigaction *act, struct sigaction *oldact);
+int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
 
 // 将参数set信号集初始化，然后将所有的信号加入到此信号集里
-int sigfill(sigset_t *set);
+int sigfillset(sigset_t *set);
 
 // 设置信号传送闹钟，即用来设置信号SIGALRM在经过参数seconds秒数后发送给目前的进程。如果未设置信号SIGALRM的处理函数，那么alarm()默认处理终止进程.
 unsigned int alarm(unsigned int seconds);

@@ -4,12 +4,25 @@ make: Entering directory '/home/xzz/MyTinyWebServer'
 /usr/bin/cmake -E cmake_progress_start /home/xzz/MyTinyWebServer/CMakeFiles /home/xzz/MyTinyWebServer/CMakeFiles/progress.marks
 make -f CMakeFiles/Makefile2 all
 make[1]: Entering directory '/home/xzz/MyTinyWebServer'
+make -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
+make[2]: Entering directory '/home/xzz/MyTinyWebServer'
+cd /home/xzz/MyTinyWebServer && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer/CMakeFiles/main.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/xzz/MyTinyWebServer'
+make -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+make[2]: Entering directory '/home/xzz/MyTinyWebServer'
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/main.dir/main.cpp.o"
+/usr/bin/c++    -std=gnu++11 -o CMakeFiles/main.dir/main.cpp.o -c /home/xzz/MyTinyWebServer/main.cpp
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=2 "Building CXX object CMakeFiles/main.dir/src/locker/locker.cc.o"
+/usr/bin/c++    -std=gnu++11 -o CMakeFiles/main.dir/src/locker/locker.cc.o -c /home/xzz/MyTinyWebServer/src/locker/locker.cc
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=3 "Building CXX object CMakeFiles/main.dir/src/timer/timer.cc.o"
+/usr/bin/c++    -std=gnu++11 -o CMakeFiles/main.dir/src/timer/timer.cc.o -c /home/xzz/MyTinyWebServer/src/timer/timer.cc
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=4 "Building CXX object CMakeFiles/main.dir/src/httpconn/http_conn.cc.o"
+/usr/bin/c++    -std=gnu++11 -o CMakeFiles/main.dir/src/httpconn/http_conn.cc.o -c /home/xzz/MyTinyWebServer/src/httpconn/http_conn.cc
+/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=5 "Linking CXX executable main"
+/usr/bin/cmake -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=
+make[2]: Leaving directory '/home/xzz/MyTinyWebServer'
+/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/xzz/MyTinyWebServer/CMakeFiles --progress-num=1,2,3,4,5 "Built target main"
 make[1]: Leaving directory '/home/xzz/MyTinyWebServer'
+/usr/bin/cmake -E cmake_progress_start /home/xzz/MyTinyWebServer/CMakeFiles 0
 make: Leaving directory '/home/xzz/MyTinyWebServer'
  
-make[1]: CMakeFiles/Makefile2: No such file or directory
-make[1]: *** No rule to make target 'CMakeFiles/Makefile2'.
-make[1]: Failed to remake makefile 'CMakeFiles/Makefile2'.
-make[1]: *** No rule to make target 'all'.
-make: *** [Makefile:84: all] Error 2
-

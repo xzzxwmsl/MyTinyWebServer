@@ -2,7 +2,7 @@
 #define HTTP_CONN_H
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include<arpa/inet.h>
+#include <arpa/inet.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
@@ -18,7 +18,7 @@
 #include <fcntl.h>
 #include "../locker/locker.h"
 #include <sys/epoll.h>
-#include<sys/uio.h>
+#include <sys/uio.h>
 class http_conn
 {
 public:
@@ -79,8 +79,8 @@ public:
 
     // 暴露的函数接口
 
-    http_conn(/* args */);
-    ~http_conn();
+    http_conn() = default;
+    ~http_conn() = default;
     // 初始化新接受的连接
     void init(int sockfd, const sockaddr_in &addr, char *root_);
     // 关闭连接

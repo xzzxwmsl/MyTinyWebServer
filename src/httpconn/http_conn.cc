@@ -106,6 +106,7 @@ http_conn::LINE_STATUS http_conn::parse_line()
     // m_checked_idx指向当前buffer中正在分析的字符
     // m_read_idx指向当前buffer中客户数据的尾部的下一个字节
     // HTTP报文中每行以 \r\n 结尾
+    int k = m_checked_idx;
     while (m_checked_idx < m_read_idx)
     {
         temp = m_read_buf[m_checked_idx];
@@ -182,6 +183,7 @@ bool http_conn::read()
         // 将已读取量加上去
         m_read_idx += bytes_read;
     }
+    printf("%s", m_read_buf);
     return true;
 }
 
@@ -228,6 +230,7 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
         m_url += 7;
         // 找到第一个以"/"开头的位置，即资源url
         m_url = strchr(m_url, '/');
+        printf("URL :|%s|", m_url);
     }
     if (m_url == nullptr || m_url[0] != '/')
     {
@@ -236,7 +239,7 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
     // 即访问url是"hostname:port/"的形式，转到默认界面
     if (strlen(m_url) == 1)
     {
-        strcat(m_url, "root.html");
+        strcat(m_url, "root/root.html");
     }
     // 转到解析请求header
     m_check_state = CHECK_STATE_HEADER;
@@ -316,12 +319,11 @@ http_conn::HTTP_CODE http_conn::process_read()
 {
     LINE_STATUS line_status = LINE_OK;
     HTTP_CODE ret = NO_REQUEST;
-    char *text = nullptr;
-    while ((m_check_state == CHECK_STATE_CONTENT && line_status == LINE_OK) || ((line_status == parse_line()) == LINE_OK))
+    char *text = 0;
+    while ((m_check_state == CHECK_STATE_CONTENT && line_status == LINE_OK) || ((line_status = parse_line()) == LINE_OK))
     {
         // 获取新的一行
         text = get_line();
-
         m_start_line = m_checked_idx;
         // printf("got http line %s\n", text);
         switch (m_check_state)
@@ -371,15 +373,17 @@ http_conn::HTTP_CODE http_conn::process_read()
 // 中并告知调用者获取文件成功
 http_conn::HTTP_CODE http_conn::do_request()
 {
-    strcpy(m_real_file, m_root);
-    int root_len = strlen(m_root);
+    strcpy(m_real_file, ".");
+    strncpy(m_real_file + 1, m_url, FILENAME_LEN - 1 - 1);
+    int root_len = strlen(m_url) + 1;
     /*  strncpy
         把 src 所指向的字符串复制到 dest
         最多复制 n 个字符。当 src 的长度小于 n 时
         dest 的剩余部分将用空字节填充。
     */
     // 写明访问文件
-    strncpy(m_real_file + root_len, m_url, FILENAME_LEN - root_len - 1);
+    // strncpy(m_real_file + root_len, m_url, FILENAME_LEN - root_len - 1);
+    printf("文件->%s\n", m_real_file);
     if (stat(m_real_file, &m_file_stat) < 0)
     {
         // 文件不存在
@@ -424,7 +428,6 @@ bool http_conn::write()
         init();
         return true;
     }
-
     while (true)
     {
         temp = writev(m_sockfd, m_iv, m_iv_count);
@@ -437,11 +440,13 @@ bool http_conn::write()
             */
             if (errno == EAGAIN)
             {
+                printf("再发\n");
                 modfd(m_epollfd, m_sockfd, EPOLLOUT);
                 return true;
             }
-            else
+
             {
+                printf("ERROR\n");
                 unmap();
                 return false;
             }
@@ -451,8 +456,11 @@ bool http_conn::write()
         bytes_have_send += temp;
         bytes_to_send -= temp;
 
+        printf("要发 %d 已发 %d 本轮发了 %d\n", bytes_to_send, bytes_have_send, temp);
+
         if (bytes_have_send >= m_iv[0].iov_len)
         {
+            printf("发送报文成功了,但是文件还没有发送完成\n");
             // 发送报文成功了,但是文件还没有发送完成
             m_iv[0].iov_len = 0;
             m_iv[1].iov_base = m_file_address + (bytes_have_send - m_write_idx);
@@ -460,13 +468,15 @@ bool http_conn::write()
         }
         else
         {
+            printf("头部都没发完\n");
             m_iv[0].iov_base = m_write_buf + bytes_have_send;
-            m_iv[0].iov_len = m_write_idx - bytes_have_send;
+            m_iv[0].iov_len -= bytes_have_send;
         }
 
         // 发送完成
         if (bytes_to_send <= 0)
         {
+            printf("发送完成\n");
             unmap();
             // 重新注册socket可读事件
             modfd(m_epollfd, m_sockfd, EPOLLIN);
@@ -511,10 +521,9 @@ bool http_conn::add_status_line(int status, const char *title)
 // 响应头
 bool http_conn::add_headers(int content_length)
 {
-    add_content_length(content_length);
-    add_linger();
-    // 响应头和响应体之间应该加个空行
-    add_blank_line();
+    return add_content_length(content_length) &&
+           add_linger() &&
+           add_blank_line();
 }
 
 // 响应体
@@ -541,6 +550,7 @@ bool http_conn::add_blank_line()
 // 由工作线程的process调用，将数据写入到缓冲区中，然后主线程注册EPOLLOUT事件
 bool http_conn::process_write(HTTP_CODE ret)
 {
+    printf("CODE is %d\n", ret);
     switch (ret)
     {
     case INTERNAL_ERROR:

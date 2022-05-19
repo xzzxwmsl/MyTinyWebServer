@@ -33,9 +33,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "out/main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-out_main-Debug-c8e4ffd710dac5d2c768.json",
-					"name" : "out/main",
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-ff09e68e15ee57c3b628.json",
+					"name" : "main",
 					"projectIndex" : 0
 				}
 			]

@@ -30,7 +30,6 @@ class util_timer
 public:
     util_timer() = default;
     util_timer(time_t exp, client_data *cd) : expire(exp), user_data(cd) {}
-    ~util_timer();
     // 回调函数
     void (*cb_func)(client_data *);
     // 超时时间
