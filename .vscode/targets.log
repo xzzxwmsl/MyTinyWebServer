@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 19 13:07:48 2022
+# Make data base, printed on Sun Jun  5 18:44:16 2022
 
 # Variables
 
@@ -39,9 +39,9 @@ SHELL = /bin/sh
 # makefile (from 'Makefile', line 45)
 RM = /usr/bin/cmake -E remove -f
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/tcf.json","_cacheRoot":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/da15b6fd3ef856477bf6f4fb29ba1b7af717770d","_corruptedFile":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/tcf.json","_cacheRoot":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/xzz/.vscode-server/data/clp/42e84e0914b17800d483f69e299e1b00.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/node
+_ = /home/xzz/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
 # makefile (from 'Makefile', line 54)
 CMAKE_BINARY_DIR = /home/xzz/MyTinyWebServer
 # makefile (from 'Makefile', line 1)
@@ -57,15 +57,15 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/xzz
 # environment
-SSH_CONNECTION = 221.10.55.157 55238 10.0.12.6 22
+SSH_CONNECTION = 221.10.55.157 63914 10.0.12.6 22
 # environment
-PATH = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/xzz/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/1002
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-81af5f66-5424-4644-bd0a-44ac913ee580.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-76925560-6b63-4837-994b-a2b84534c193.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -109,7 +109,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 1
 # environment
-XDG_SESSION_ID = 101907
+XDG_SESSION_ID = 137972
 # environment
 USER = xzz
 # makefile
@@ -131,11 +131,11 @@ MAKEFLAGS = pqrRs
 # environment
 MFLAGS = -pqrRs
 # environment
-SSH_CLIENT = 221.10.55.157 55238 22
+SSH_CLIENT = 221.10.55.157 63914 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /home/xzz/.vscode-server/bin/da15b6fd3ef856477bf6f4fb29ba1b7af717770d/bin/helpers/browser.sh
+BROWSER = /home/xzz/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/helpers/browser.sh
 # environment
 VSCODE_HANDLES_SIGPIPE = true
 # default
@@ -277,7 +277,6 @@ preinstall/fast:
 #  File has not been updated.
 
 # Not a target:
- 
 Makefile:
 #  Implicit rule search has been done.
 #  Last modified 2022-05-18 23:17:14.65364594
@@ -291,6 +290,7 @@ Makefile:
 
 clean/fast: clean
 #  Phony target (prerequisite of .PHONY).
+ 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -556,7 +556,6 @@ rebuild_cache:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 61):
- 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 
@@ -574,6 +573,6 @@ rebuild_cache:
 # strcache performance: lookups = 258 / hit rate = 74%
 # hash-table stats:
 # Load=67/8192=1%, Rehash=0, Collisions=2/258=1%
-# Finished Make data base on Thu May 19 13:07:48 2022
+# Finished Make data base on Sun Jun  5 18:44:16 2022
 
  

@@ -42,3 +42,7 @@ qingguoyi https://github.com/qinguoyi/TinyWebServer
  * ET：边缘触发模式，一般和非阻塞fd一起使用。 epoll_wait检测到文件描述符有事件发生，然后会通知应用，并且ET中，**一个事件只触发一次**，因此对该fd的处理（如读取数据等）应一次完成
 * LT：水平触发模式，epoll_wait检测到文件描述符有事件发生时，会将其通知给应用程序，可以不立即处理。**每次调用epoll_wait都会通知**，直到该事件被处理
 * EPOLLONESHOT：保证只有一个线程可以处理该socket上发生的事件，每次处理完后，需要调用`epoll_ctl`来重置EPOLLONESHOT事件
+
+**ET模式需要配合非阻塞IO**
+ET模式下每次write或read需要循环write或read直到返回EAGAIN错误。以读操作为例，这是因为ET模式只在socket描述符状态发生变化时才触发事件，如果不一次把socket内核缓冲区的数据读完，会导致socket内核缓冲区中即使还有一部分数据，该socket的可读事件也不会被触发
+根据上面的讨论，若ET模式下使用阻塞IO，则程序一定会阻塞在最后一次write或read操作，因此说ET模式下一定要使用非阻塞IO  

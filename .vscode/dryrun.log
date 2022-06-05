@@ -3,8 +3,10 @@ make: Entering directory '/home/xzz/MyTinyWebServer'
 /usr/bin/cmake -S/home/xzz/MyTinyWebServer -B/home/xzz/MyTinyWebServer --check-build-system CMakeFiles/Makefile.cmake 0
 /usr/bin/cmake -E cmake_progress_start /home/xzz/MyTinyWebServer/CMakeFiles /home/xzz/MyTinyWebServer/CMakeFiles/progress.marks
 make -f CMakeFiles/Makefile2 all
+ 
 make[1]: Entering directory '/home/xzz/MyTinyWebServer'
 make -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
+ 
 make[2]: Entering directory '/home/xzz/MyTinyWebServer'
 cd /home/xzz/MyTinyWebServer && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer /home/xzz/MyTinyWebServer/CMakeFiles/main.dir/DependInfo.cmake --color=
 make[2]: Leaving directory '/home/xzz/MyTinyWebServer'
